@@ -1,8 +1,8 @@
-FROM alpine
+FROM scratch
 
-COPY bin /bin/
+COPY bin /bin
 
 # Create Root CA
-RUN /bin/tlsgen-dev --root
+RUN ["/bin/tlsgen-dev", "-root"]
 
-ENTRYPOINT /bin/tlsgen-dev
+ENTRYPOINT ["/bin/tlsgen-dev"]

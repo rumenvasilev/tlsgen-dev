@@ -39,10 +39,8 @@ func main() {
 	flag.Parse()
 
 	var err error
-	dir := tlsDir
 	if *root {
 		err = generateRoot()
-		dir = "./"
 	} else {
 		err = run()
 	}
@@ -51,7 +49,7 @@ func main() {
 		log.Fatalln(err)
 	}
 
-	log.Printf("Certificate material generated in %q\n", dir)
+	log.Printf("Certificate material generated in %q\n", tlsDir)
 }
 
 func run() error {
@@ -104,6 +102,7 @@ func createCertDir() error {
 		}
 	}
 
+	log.Println("Created TLS directories")
 	return nil
 }
 
